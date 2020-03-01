@@ -5,7 +5,7 @@ import com.exercise.weatherapp.data.network.NetworkInterceptor
 import com.exercise.weatherapp.data.network.WeatherApi
 import com.exercise.weatherapp.data.repository.DataRepositoryImpl
 import com.exercise.weatherapp.data.repository.IDataRepository
-import com.exercise.weatherapp.ui.mainlist.MainActivityViewModel
+import com.exercise.weatherapp.view.WeatherViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit
 
 val koinModule = module {
     single { DataRepositoryImpl(get()) as IDataRepository }
-    viewModel { MainActivityViewModel(get()) }
+    viewModel { WeatherViewModel(get()) }
     factory { provideOkHttpClient(get(), androidContext()) }
     factory { provideApi(get()) }
     factory { httpLoggingInterceptor() }
